@@ -13,10 +13,7 @@ export default function Layout({ children, home }) {
           name="description"
           content="Personal blog website using Next.js"
         />
-        <meta
-          property="og:image"
-          content="https://www.flickr.com/photos/toweronephotography/49996526948/in/dateposted/"
-        />
+        <meta property="og:image" content="https://flic.kr/p/2jb2gBj" />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
