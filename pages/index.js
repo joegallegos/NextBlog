@@ -22,7 +22,7 @@ export default function Home({ allPostsData }) {
         </p>
       </section>
       <section className="text-xl leading-6">
-        <h2 className="text-2xl leading-6 my-4">Blog</h2>
+        <h2 className="text-2xl leading-6 my-4">Blog Posts</h2>
         <ul className="list-none p-0 m-0">
           {allPostsData.map(({ id, date, title }) => (
             <li className="mb-5 text-blue-600" key={id}>
