@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 const name = 'Joe Gallegos';
-export const siteTitle = 'Next.js blog site';
+export const siteTitle = 'Joe Gallegos blog site using Next.js';
 
 export default function Layout({ children, home }) {
   return (
