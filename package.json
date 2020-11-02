@@ -21,10 +21,7 @@
     "react-dom": "16.13.1",
     "react-markdown": "^5.0.2",
     "react-syntax-highlighter": "^15.3.0",
-    "react-typography": "^0.16.19",
-    "tailwindcss": "^1.9.6",
-    "typography": "^0.16.19",
-    "typography-theme-sutro": "^0.16.19"
+    "tailwindcss": "^1.9.6"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^3.0.0"
