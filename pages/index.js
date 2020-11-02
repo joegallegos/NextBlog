@@ -1,10 +1,10 @@
 import Head from 'next/head';
+import fs from 'fs';
+import matter from 'gray-matter';
 import Link from 'next/link';
 import Layout, { siteTitle } from '../components/layout';
-import { getSortedPostsData } from '../lib/posts';
-import Date from '../components/Date';
 
-export default function Home({ allPostsData }) {
+export default function Home({ posts }) {
   return (
     <Layout home>
       <Head>
@@ -15,37 +15,63 @@ export default function Home({ allPostsData }) {
           Hi there, I'm <b>Joe</b>. I'm a front-end developer originally from
           Denver, CO currently living in Dallas, Tx.
         </p>
-        <br />
         <p>
           I am going to make this blog site just for learning purposes and
           maybe, if I like it, I'll keep it going!
         </p>
       </section>
       <section className="text-xl leading-6">
-        <h2 className="text-2xl leading-6 my-4">Blog Posts</h2>
-        <ul className="list-none p-0 m-0">
-          {allPostsData.map(({ id, date, title }) => (
-            <li className="mb-5 text-blue-600" key={id}>
-              <Link href={`/posts/${id}`}>
-                <a>{title}</a>
-              </Link>
-              <br />
-              <small className="text-gray-500">
-                <Date dateString={date} />
-              </small>
-            </li>
+        {posts
+          .reverse()
+          .map(({ frontmatter: { title, description, date }, slug }) => (
+            <article key={slug}>
+              <header className="flex flex-col p-0 m-0">
+                <h3 className="p-0 m-0">
+                  <Link href={'/post/[slug]'} as={`/post/${slug}`}>
+                    <a className="text-2xl font-semibold text-blue-600 no-underline">
+                      {title}
+                    </a>
+                  </Link>
+                </h3>
+                <span className="text-xs">{date}</span>
+              </header>
+              <section>
+                <p className="mb-2 text-sm text-gray-600">{description}</p>
+              </section>
+            </article>
           ))}
-        </ul>
       </section>
     </Layout>
   );
 }
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+  const files = fs.readdirSync(`${process.cwd()}/content/posts`);
+
+  const posts = files.map((filename) => {
+    const markdownWithMetadata = fs
+      .readFileSync(`content/posts/${filename}`)
+      .toString();
+
+    const { data } = matter(markdownWithMetadata);
+
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = data.date.toLocaleDateString('en-US', options);
+
+    const frontmatter = {
+      ...data,
+      date: formattedDate,
+    };
+
+    return {
+      slug: filename.replace('.md', ''),
+      frontmatter,
+    };
+  });
+
   return {
     props: {
-      allPostsData,
+      posts,
     },
   };
 }

@@ -1,5 +1,5 @@
-import Head from 'next/head';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const name = 'Joe Gallegos';
 export const siteTitle = 'Joe Gallegos blog site using Next.js';
