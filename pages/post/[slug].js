@@ -5,7 +5,7 @@ import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown/with-html';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
-import Layout from '../../components/Layout';
+import Layout from '../../components/layout';
 
 const CodeBlock = ({ language, value }) => {
   return <SyntaxHighlighter language={language}>{value}</SyntaxHighlighter>;
