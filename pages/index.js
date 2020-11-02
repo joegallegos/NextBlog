@@ -22,7 +22,6 @@ export default function Home({ posts }) {
       </section>
       <section className="text-xl leading-6">
         {posts
-          .reverse()
           .map(({ frontmatter: { title, description, date }, slug }) => (
             <article key={slug}>
               <header className="flex flex-col p-0 m-0">
@@ -39,7 +38,8 @@ export default function Home({ posts }) {
                 <p className="mb-2 text-sm text-gray-600">{description}</p>
               </section>
             </article>
-          ))}
+          ))
+          .reverse()}
       </section>
     </Layout>
   );
