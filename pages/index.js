@@ -39,6 +39,7 @@ export default function Home({ posts }) {
               </section>
             </article>
           ))
+          .sort(posts.date)
           .reverse()}
       </section>
     </Layout>
