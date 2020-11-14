@@ -1,6 +1,6 @@
 ---
-title: The start of the Denver trip
-description: The start of my 49 day trip back home
+title: First Astro Night in Denver
+description: The first night of trying some astro pics
 date: 2020-11-14
 ---
 
