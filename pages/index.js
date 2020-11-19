@@ -39,8 +39,7 @@ export default function Home({ posts }) {
               </section>
             </article>
           ))
-          .sort(posts.date)
-          .reverse()}
+          .sort((a, b) => (a.date > b.date ? 1 : -1))}
       </section>
     </Layout>
   );
