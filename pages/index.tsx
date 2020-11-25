@@ -52,7 +52,7 @@ const Home: React.FC<{ posts: Post[] }> = (props) => {
                   </a>
                 </Link>
                 <>
-                  <p className="text-xs mb-4 text-gray-600">{date}</p>
+                  <p className="text-xs mb-3 text-gray-600">{date}</p>
                   <p className="truncate">{post.custom_excerpt}</p>
                 </>
               </li>
