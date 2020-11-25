@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Layout from '../../components/Layout';
 
-const { GHOST_CONTENT_API_KEY, BLOG_URL } = process.env;
+const { NEXT_PUBLIC_GHOST_CONTENT_API_KEY, NEXT_PUBLIC_BLOG_URL } = process.env;
 
 type Post = {
   title: string;
@@ -16,7 +16,7 @@ type Post = {
 
 async function getPost(slug: string) {
   const res = await fetch(
-    `${BLOG_URL}/ghost/api/v3/content/posts/slug/${slug}?key=${GHOST_CONTENT_API_KEY}&fields=title,slug,html,created_at,updated_at`,
+    `${NEXT_PUBLIC_BLOG_URL}/ghost/api/v3/content/posts/slug/${slug}?key=${NEXT_PUBLIC_GHOST_CONTENT_API_KEY}&fields=title,slug,html,created_at,updated_at`,
   ).then((res) => res.json());
 
   const posts = res.posts;
