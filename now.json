@@ -1,8 +1,0 @@
-{
-  "build": {
-    "env": {
-      "GHOST_CONTENT_API_KEY": "@ghost_content_api_key",
-      "BLOG_URL": "@blog_url"
-    }
-  }
-}

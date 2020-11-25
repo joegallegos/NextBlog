@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import Layout from '../components/Layout';
 
-const URL = process.env.BLOG_URL;
-const API_KEY = process.env.GHOST_CONTENT_API_KEY;
+const { NEXT_PUBLIC_GHOST_CONTENT_API_KEY, NEXT_PUBLIC_BLOG_URL } = process.env;
 
 type Post = {
   title: string;
@@ -13,7 +12,7 @@ type Post = {
 
 async function getPosts() {
   const res = await fetch(
-    `${URL}/ghost/api/v3/content/posts/?key=${API_KEY}&fields=title,slug,published_at,custom_excerpt`,
+    `${NEXT_PUBLIC_BLOG_URL}/ghost/api/v3/content/posts/?key=${NEXT_PUBLIC_GHOST_CONTENT_API_KEY}&fields=title,slug,published_at,custom_excerpt`,
   ).then((res) => res.json());
 
   const posts = res.posts;
@@ -41,7 +40,7 @@ const Home: React.FC<{ posts: Post[] }> = (props) => {
           </p>
         </section>
         <ul className="list-none">
-          {posts.map((post, index) => {
+          {posts.map((post) => {
             const date = new Date(post.published_at).toLocaleDateString();
 
             return (
@@ -52,7 +51,7 @@ const Home: React.FC<{ posts: Post[] }> = (props) => {
                   </a>
                 </Link>
                 <>
-                  <p className="text-xs mb-4 text-gray-600">{date}</p>
+                  <p className="text-xs mb-3 text-gray-600">{date}</p>
                   <p className="truncate">{post.custom_excerpt}</p>
                 </>
               </li>
