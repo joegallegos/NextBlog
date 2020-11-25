@@ -51,7 +51,7 @@ export default function Layout({ children, home }: Layout) {
       </header>
       <main>{children}</main>
       {!home && (
-        <div>
+        <div className="mt-4">
           <Link href="/">
             <a>
               <Button colorScheme="blue" size="sm" variant="solid">
