@@ -35,27 +35,15 @@ export default function Layout({ children, home }) {
               <a>
                 <img
                   src="/images/profile.jpg"
-                  className="w-24 h-24 rounded-full"
+                  className="w-24 h-24 rounded-full mb-4"
                   alt={name}
                 />
               </a>
             </Link>
-            <h2 className="text-2xl leading-5 my-4">
-              <Link href="/">
-                <a className="text-current">{name}</a>
-              </Link>
-            </h2>
           </>
         )}
       </header>
       <main>{children}</main>
-      {!home && (
-        <div className="m-12 text-blue-600">
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
     </div>
   );
 }
