@@ -1,7 +1,6 @@
-import { Button, Spinner } from '@chakra-ui/react';
-import Link from 'next/link';
+import { Spinner } from '@chakra-ui/react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
 import Layout from '../../components/Layout';
 
 const { NEXT_PUBLIC_GHOST_CONTENT_API_KEY, NEXT_PUBLIC_BLOG_URL } = process.env;
@@ -40,22 +39,7 @@ export const getStaticPaths = () => {
 
 const Post: React.FC<{ post: Post }> = (props) => {
   const { post } = props;
-  const [enableLoadComments, setEnableLoadComments] = useState<boolean>(true);
   const router = useRouter();
-
-  function loadComments() {
-    setEnableLoadComments(false);
-    (window as any).disqus_config = function () {
-      this.page.url = window.location.href;
-      this.page.identifier = post.slug;
-    };
-
-    const script = document.createElement('script');
-    script.src = 'https://blog-joegallegos-dev.disqus.com/embed.js';
-    script.setAttribute('data-timestamp', Date.now().toString());
-
-    document.body.appendChild(script);
-  }
 
   if (router.isFallback) {
     return (
@@ -72,31 +56,18 @@ const Post: React.FC<{ post: Post }> = (props) => {
 
   return (
     <Layout>
+      <Head>
+        <title>Blog - {post.title}</title>
+      </Head>
       <div className="mb-4">
-        <Link href="/">
-          <a>
-            <Button colorScheme="blue" size="sm" variant="solid">
-              ← Back to home
-            </Button>
-          </a>
-        </Link>
         <h1 className="font-bold text-xl text-center">{post.title}</h1>
-        <span className="flex justify-center text-xs text-gray-600">
+        <span className="flex justify-center text-xs text-gray-700">
           {post.updated_at !== post.created_at
             ? `Updated on: ${updated}`
             : `Published on: ${created}`}
         </span>
       </div>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
-
-      <div className="mt-8">
-        {enableLoadComments && (
-          <Button colorScheme="blue" variant="solid" onClick={loadComments}>
-            Load Comments
-          </Button>
-        )}
-        <div className="mt-4" id="disqus_thread"></div>
-      </div>
+      <div className="post-html">{require('html-react-parser')(post.html)}</div>
     </Layout>
   );
 };

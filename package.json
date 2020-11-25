@@ -1,6 +1,6 @@
 {
-  "name": "learn-starter",
-  "version": "0.1.0",
+  "name": "joe-gallegos-blog",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next",
@@ -16,6 +16,7 @@
     "@types/react": "^17.0.0",
     "framer-motion": "^2.9.4",
     "gray-matter": "^4.0.2",
+    "html-react-parser": "^0.14.2",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
     "lqip-loader": "^2.2.1",

@@ -1,5 +1,6 @@
+import Head from 'next/head';
 import Link from 'next/link';
-import Layout from '../components/Layout';
+import Layout, { siteTitle } from '../components/Layout';
 
 const { NEXT_PUBLIC_GHOST_CONTENT_API_KEY, NEXT_PUBLIC_BLOG_URL } = process.env;
 
@@ -32,6 +33,9 @@ const Home: React.FC<{ posts: Post[] }> = (props) => {
 
   return (
     <Layout home>
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
       <div className="flex flex-col text-center mt-8">
         <section className="text-xl leading-6 mb-4">
           <p className="text-lg">
@@ -46,12 +50,12 @@ const Home: React.FC<{ posts: Post[] }> = (props) => {
             return (
               <li key={post.slug} className="mb-2">
                 <Link href="/post/[slug]" as={`/post/${post.slug}`}>
-                  <a className="no-underline text-xl text-blue-600 font-semibold">
+                  <a className="no-underline text-xl text-link font-semibold">
                     {post.title}
                   </a>
                 </Link>
                 <>
-                  <p className="text-xs mb-3 text-gray-600">{date}</p>
+                  <p className="text-xs mb-3 text-gray-700">{date}</p>
                   <p className="truncate">{post.custom_excerpt}</p>
                 </>
               </li>
