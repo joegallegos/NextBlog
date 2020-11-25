@@ -15,8 +15,16 @@ type Post = {
 };
 
 async function getPost(slug: string) {
+  const baseUrl = process.env.BLOG_URL;
+  const key = process.env.GHOST_CONTENT_API_KEY;
+
   const res = await fetch(
-    `${BLOG_URL}/ghost/api/v3/content/posts/slug/${slug}/?key=${GHOST_CONTENT_API_KEY}&fields=title,slug,html,created_at,updated_at`,
+    baseUrl +
+      '/ghost/api/v3/content/posts/slug/' +
+      slug +
+      '/?key=' +
+      key +
+      '&fields=title,slug,html,created_at,updated_at',
   ).then((res) => res.json());
 
   const posts = res.posts;
