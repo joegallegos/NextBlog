@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Head from 'next/head';
 import { Button } from '@chakra-ui/react';
+import { FiCamera, FiInstagram, FiLinkedin } from 'react-icons/fi';
+import { IconContext } from 'react-icons/lib';
 
 const name = 'Joe Gallegos';
 export const siteTitle = 'Joe Gallegos Personal Blog';
@@ -34,6 +36,28 @@ export default function Layout({ children, home }: Layout) {
             <h1 className="text-3xl leading-5 font-extrabold tracking-tighter py-4">
               {name}
             </h1>
+            <IconContext.Provider value={{ color: '#6E0E0A' }}>
+              <div className="flex flex-row space-x-4">
+                <a
+                  href="https://www.flickr.com/photos/joegallegosphotography"
+                  target="__blank"
+                >
+                  <FiCamera />
+                </a>
+                <a
+                  href="https://www.instagram.com/joegallegosphoto/"
+                  target="__blank"
+                >
+                  <FiInstagram />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/joseph-gallegos-5435755a/"
+                  target="__blank"
+                >
+                  <FiLinkedin />
+                </a>
+              </div>
+            </IconContext.Provider>
           </>
         ) : (
           <>
@@ -46,6 +70,28 @@ export default function Layout({ children, home }: Layout) {
                 />
               </a>
             </Link>
+            <IconContext.Provider value={{ color: '#6E0E0A' }}>
+              <div className="flex flex-row space-x-4 mb-3">
+                <a
+                  href="https://www.flickr.com/photos/joegallegosphotography"
+                  target="__blank"
+                >
+                  <FiCamera />
+                </a>
+                <a
+                  href="https://www.instagram.com/joegallegosphoto/"
+                  target="__blank"
+                >
+                  <FiInstagram />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/joseph-gallegos-5435755a/"
+                  target="__blank"
+                >
+                  <FiLinkedin />
+                </a>
+              </div>
+            </IconContext.Provider>
           </>
         )}
       </header>
