@@ -5,8 +5,6 @@ import { useState } from 'react';
 import Layout from '../../components/Layout';
 
 const { GHOST_CONTENT_API_KEY, BLOG_URL } = process.env;
-const base = BLOG_URL + '/ghost/api/v3/content/posts/slug/';
-const key = GHOST_CONTENT_API_KEY;
 
 type Post = {
   title: string;
@@ -17,6 +15,8 @@ type Post = {
 };
 
 async function getPost(slug: string) {
+  const base = BLOG_URL + '/ghost/api/v3/content/posts/slug/';
+  const key = GHOST_CONTENT_API_KEY;
   const res = await fetch(
     base +
       slug +
