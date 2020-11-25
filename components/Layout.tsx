@@ -4,7 +4,12 @@ import Head from 'next/head';
 const name = 'Joe Gallegos';
 export const siteTitle = 'Joe Gallegos blog site using Next.js';
 
-export default function Layout({ children, home }) {
+type Layout = {
+  children: any;
+  home?: boolean;
+};
+
+export default function Layout({ children, home }: Layout) {
   return (
     <div className="max-w-xl px-4 mt-12 mx-auto mb-24">
       <Head>
