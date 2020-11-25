@@ -20,7 +20,7 @@ async function getPost(slug: string) {
 
   const res = await fetch(
     baseUrl +
-      '/ghost/api/v3/content/posts/slug/' +
+      'ghost/api/v3/content/posts/slug/' +
       slug +
       '/?key=' +
       key +

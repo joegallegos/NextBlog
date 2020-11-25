@@ -14,7 +14,7 @@ async function getPosts() {
 
   const res = await fetch(
     baseUrl +
-      '/ghost/api/v3/content/posts/?key=' +
+      'ghost/api/v3/content/posts/?key=' +
       key +
       '&fields=title,slug,published_at,custom_excerpt',
   ).then((res) => res.json());
