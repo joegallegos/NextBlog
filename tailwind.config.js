@@ -7,7 +7,12 @@ module.exports = {
     ],
   },
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        brand: '#8AA399',
+        link: '#6E0E0A',
+      },
+    },
   },
   variants: {},
   plugins: [],

@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import Head from 'next/head';
+import { Button } from '@chakra-ui/react';
 
 const name = 'Joe Gallegos';
-export const siteTitle = 'Joe Gallegos blog site using Next.js';
+export const siteTitle = 'Joe Gallegos Personal Blog';
 
 type Layout = {
   children: any;
@@ -11,7 +12,7 @@ type Layout = {
 
 export default function Layout({ children, home }: Layout) {
   return (
-    <div className="max-w-xl px-4 mt-12 mx-auto mb-24">
+    <div className="max-w-2xl py-12 px-16 mt-8 mx-auto mb-24 bg-brand rounded-lg">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -49,6 +50,17 @@ export default function Layout({ children, home }: Layout) {
         )}
       </header>
       <main>{children}</main>
+      {!home && (
+        <div>
+          <Link href="/">
+            <a>
+              <Button colorScheme="blue" size="sm" variant="solid">
+                ← Back to home
+              </Button>
+            </a>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
