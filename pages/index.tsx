@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Layout from '../components/Layout';
 
+const { GHOST_CONTENT_API_KEY, BLOG_URL } = process.env;
+
 type Post = {
   title: string;
   slug: string;
@@ -13,10 +15,7 @@ async function getPosts() {
   const key = process.env.GHOST_CONTENT_API_KEY;
 
   const res = await fetch(
-    baseUrl +
-      'ghost/api/v3/content/posts/?key=' +
-      key +
-      '&fields=title,slug,published_at,custom_excerpt',
+    `${BLOG_URL}/ghost/api/v3/content/posts/?key=${GHOST_CONTENT_API_KEY}&fields=title,slug,published_at,custom_excerpt`,
   ).then((res) => res.json());
 
   const posts = res.posts;
