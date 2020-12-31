@@ -14,7 +14,7 @@ type Layout = {
 
 export default function Layout({ children, home }: Layout) {
   return (
-    <div className="max-w-2xl py-12 px-16 mt-8 mx-auto mb-24 bg-brand rounded-lg">
+    <div className="max-w-4xl py-12 px-16 mt-8 mx-auto mb-24 bg-brand rounded-lg">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
