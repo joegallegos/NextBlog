@@ -5,7 +5,7 @@ import { FiCamera, FiInstagram, FiLinkedin } from 'react-icons/fi';
 import { IconContext } from 'react-icons/lib';
 
 const name = 'Joe Gallegos';
-export const siteTitle = 'Joe Gallegos Personal Blog';
+export const siteTitle = 'Joe Gallegos Blog';
 
 type Layout = {
   children: any;
@@ -14,13 +14,10 @@ type Layout = {
 
 export default function Layout({ children, home }: Layout) {
   return (
-    <div className="max-w-4xl py-12 px-16 mt-8 mx-auto mb-24 bg-brand rounded-lg">
+    <div className="max-w-xl lg:max-w-4xl md:max-w-2xl py-12 px-4 sm:px-8 md:px-16 mt-8 mx-auto mb-24 bg-brand rounded-lg">
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Personal blog website using Next.js"
-        />
+        <meta name="description" content="Photography, Code and Life" />
         <meta property="og:image" content="/images/camera.jpg" />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
