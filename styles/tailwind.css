@@ -38,3 +38,7 @@ img {
 .post-html strong {
   margin-bottom: 1rem;
 }
+
+figcaption {
+  @apply flex justify-center text-gray-700 text-xs text-center mb-4 italic;
+}
