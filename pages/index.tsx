@@ -9,14 +9,16 @@ type Post = {
   slug: string;
   published_at: string;
   custom_excerpt: string;
+  feature_image: string;
 };
 
 async function getPosts() {
   const res = await fetch(
-    `${NEXT_PUBLIC_BLOG_URL}/ghost/api/v3/content/posts/?key=${NEXT_PUBLIC_GHOST_CONTENT_API_KEY}&fields=title,slug,published_at,custom_excerpt`,
+    `${NEXT_PUBLIC_BLOG_URL}/ghost/api/v3/content/posts/?key=${NEXT_PUBLIC_GHOST_CONTENT_API_KEY}&fields=title,slug,published_at,custom_excerpt,feature_image`,
   ).then((res) => res.json());
 
   const posts = res.posts;
+
   return posts;
 }
 
@@ -43,21 +45,32 @@ const Home: React.FC<{ posts: Post[] }> = (props) => {
             Denver, CO currently living in Dallas, Tx.
           </p>
         </section>
-        <ul className="list-none">
+        <ul className="flex flex-col list-none items-center">
           {posts.map((post) => {
             const date = new Date(post.published_at).toLocaleDateString();
 
             return (
-              <li key={post.slug} className="mb-2">
+              <li key={post.slug} className="mb-2 cursor-pointer">
                 <Link href="/post/[slug]" as={`/post/${post.slug}`}>
-                  <a className="no-underline text-xl text-link font-semibold">
-                    {post.title}
-                  </a>
+                  <div className="max-w-sm rounded border-gray-700 border-2 overflow-hidden shadow-xl">
+                    <img
+                      className="w-full cursor-pointer"
+                      src={
+                        post.feature_image
+                          ? post.feature_image
+                          : '/images/default.jpg'
+                      }
+                      alt={post.title}
+                    />
+                    <div className="px-6 py-4">
+                      <div className="font-bold text-xl mb-2">{post.title}</div>
+                      <p className="text-xs mb-3 text-gray-700">{date}</p>
+                      <p className="text-gray-700 text-base">
+                        {post.custom_excerpt}
+                      </p>
+                    </div>
+                  </div>
                 </Link>
-                <>
-                  <p className="text-xs mb-3 text-gray-700">{date}</p>
-                  <p className="truncate">{post.custom_excerpt}</p>
-                </>
               </li>
             );
           })}
