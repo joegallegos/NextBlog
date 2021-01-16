@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Head from 'next/head';
 import { Button } from '@chakra-ui/react';
-import { FiCamera, FiInstagram, FiLinkedin } from 'react-icons/fi';
+import { FiCamera, FiInstagram, FiLinkedin, FiMonitor } from 'react-icons/fi';
 import { IconContext } from 'react-icons/lib';
 
 const name = 'Joe Gallegos';
@@ -35,6 +35,9 @@ export default function Layout({ children, home }: Layout) {
             </h1>
             <IconContext.Provider value={{ color: '#6E0E0A' }}>
               <div className="flex flex-row space-x-4">
+                <a href="https://www.joegallegosphoto.com/" target="__blank">
+                  <FiMonitor />
+                </a>
                 <a
                   href="https://www.flickr.com/photos/joegallegosphotography"
                   target="__blank"
@@ -69,6 +72,9 @@ export default function Layout({ children, home }: Layout) {
             </Link>
             <IconContext.Provider value={{ color: '#6E0E0A' }}>
               <div className="flex flex-row space-x-4 mb-3">
+                <a href="https://www.joegallegosphoto.com/" target="__blank">
+                  <FiMonitor />
+                </a>
                 <a
                   href="https://www.flickr.com/photos/joegallegosphotography"
                   target="__blank"
