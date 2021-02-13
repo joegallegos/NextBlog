@@ -52,7 +52,7 @@ const Home: React.FC<{ posts: Post[] }> = (props) => {
             return (
               <li key={post.slug} className="mb-2 cursor-pointer">
                 <Link href="/post/[slug]" as={`/post/${post.slug}`}>
-                  <div className="max-w-sm rounded border-gray-700 border-2 overflow-hidden shadow-xl">
+                  <div className="rounded border-gray-700 border-2 overflow-hidden shadow-xl text-center">
                     <img
                       className="w-full cursor-pointer"
                       src={
@@ -65,7 +65,7 @@ const Home: React.FC<{ posts: Post[] }> = (props) => {
                     <div className="px-6 py-4">
                       <div className="font-bold text-xl mb-2">{post.title}</div>
                       <p className="text-xs mb-3 text-gray-700">{date}</p>
-                      <p className="text-gray-700 text-base">
+                      <p className="text-gray-800 text-base">
                         {post.custom_excerpt}
                       </p>
                     </div>
